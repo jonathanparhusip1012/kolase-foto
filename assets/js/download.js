@@ -55,6 +55,9 @@ function waitForBackgroundImage(element) {
 
 async function downloadCollage(format) {
   const element = document.getElementById("export-area");
+  const originalWidth = element.clientWidth;
+  const originalHeight = element.scrollHeight;
+  const targetWidth = 1200;
 
   toggleLoading(true);
 
@@ -64,8 +67,15 @@ async function downloadCollage(format) {
 
     await new Promise((resolve) => setTimeout(resolve, 300));
 
+    const renderHeight = Math.max(
+      1,
+      Math.round((originalHeight / originalWidth) * targetWidth)
+    );
+
     const canvas = await html2canvas(element, {
       scale: 4,
+      width: targetWidth,
+      height: renderHeight,
       useCORS: false,
       backgroundColor: null,
       logging: false,
