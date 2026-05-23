@@ -48,12 +48,12 @@ body {
   background: white;
   border-radius: 30px;
   padding: 15px;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  justify-items: center;
-  align-items: start;
+  justify-content: center;
+  align-content: flex-start;
   box-sizing: border-box;
 }
 
@@ -66,9 +66,11 @@ body {
   border-radius: 20px;
   background: #f8fafc;
   position: relative;
-  width: 100%;
   aspect-ratio: 1 / 1;
-  min-height: 200px;
+  flex: 0 0 calc(25% - 10px);
+  max-width: calc(25% - 10px);
+  min-width: 0;
+  height: auto;
 }
 
 .img-wrapper img {
@@ -80,30 +82,6 @@ body {
 
 .img-wrapper img:hover {
   transform: scale(1.05);
-}
-
-.grid-1 {
-  grid-template-columns: minmax(240px, 440px);
-  justify-content: center;
-}
-
-.grid-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  justify-content: center;
-}
-
-.grid-3 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  justify-content: center;
-}
-
-.grid-3 .img-wrapper:first-child {
-  grid-column: span 2;
-}
-
-.grid-many {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  justify-content: center;
 }
 
 .loading-text {
