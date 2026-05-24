@@ -1,21 +1,6 @@
 
-const FIXED_12_LIMIT = 12;
-
 let photoData = [];
 let currentTemplate = "modern";
-let currentExportPreset = "default";
-
-function setExportPreset(preset) {
-  currentExportPreset = preset;
-
-  if (preset === "fixed12" && photoData.length > FIXED_12_LIMIT) {
-    photoData = photoData.slice(0, FIXED_12_LIMIT);
-  }
-}
-
-function isFixed12Preset() {
-  return currentExportPreset === "fixed12";
-}
 
 function handleFileUpload(event) {
   const files = Array.from(event.target.files || []);
@@ -39,10 +24,6 @@ function handlePaste(e) {
 
 function processFile(file) {
   if (!file || !file.type.includes("image")) {
-    return;
-  }
-
-  if (isFixed12Preset() && photoData.length >= FIXED_12_LIMIT) {
     return;
   }
 
@@ -79,10 +60,6 @@ function updateCollage() {
 
   container.innerHTML = "";
   container.className = "collage-base";
-
-  if (isFixed12Preset()) {
-    container.classList.add("preset-fixed12");
-  }
 
   if (photoData.length === 1) {
     container.classList.add("grid-1");
