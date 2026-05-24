@@ -46,11 +46,11 @@ body {
   width: 100%;
   min-height: 600px;
   background: white;
-  border-radius: 30px;
+  border-radius: 10px;
   padding: 15px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 7px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   justify-content: center;
   align-content: flex-start;
@@ -63,7 +63,9 @@ body {
 
 .img-wrapper {
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 10px;
+  border-width: 2px;
+  border-color: #f8fafc;
   background: #f8fafc;
   position: relative;
   aspect-ratio: 1 / 1;
@@ -153,31 +155,79 @@ body {
 }
 
 .export-card {
-  background: transparent;
+  background: #0f172a;
   padding: 0 20px;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 
 .export-card h2 {
-  color: #0f172a;
+  color: #fffb04;
   font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 0px;
 }
 
 .export-card p {
-  color: #475569;
+  color: #ffd900;
   font-size: 1rem;
   margin-bottom: 0;
 }
 
 #export-area {
   background: white;
-  border-radius: 30px;
+  border-radius: 10px;
   overflow: hidden;
   width: 100%;
   max-width: 1200px;
   margin: auto;
+}
+
+.export-area-fixed12 {
+  width: 700px;
+  height: 700px;
+  max-width: 700px;
+  max-height: 700px;
+  display: flex;
+  flex-direction: column;
+}
+
+.preset-fixed12 {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  padding: 12px;
+  justify-content: center;
+  align-content: center;
+}
+
+.preset-fixed12 .img-wrapper {
+  width: 140px;
+  height: 140px;
+  flex: 0 0 140px;
+  max-width: 140px;
+  border-radius: 12px;
+}
+
+.preset-fixed12 .export-header {
+  padding-top: 6px;
+}
+
+.preset-fixed12 .export-logo {
+  width: 110px;
+  height: 110px;
+  margin-bottom: 4px;
+}
+
+.preset-fixed12 .export-card {
+  padding-top: 2px;
+}
+
+.preset-fixed12 .export-card h2 {
+  font-size: 1.2rem;
+}
+
+.preset-fixed12 .export-card p {
+  font-size: 0.9rem;
 }
 
 #collage-container {
