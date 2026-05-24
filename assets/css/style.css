@@ -50,7 +50,7 @@ body {
   padding: 15px;
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: 10px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   justify-content: center;
   align-content: flex-start;
@@ -99,6 +99,10 @@ body {
   .collage-base {
     min-height: 400px;
   }
+
+  .img-wrapper {
+    height: 180px;
+  }
 }
 
 .counter-text {
@@ -139,24 +143,18 @@ body {
 .export-header {
   background: transparent;
   border-radius: 25px 25px 0 0;
-  padding: 8px 20px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0px;
+  padding: 30px 20px 10px;
 }
 
 .export-logo {
-  width: 170px;
-  height: 170px;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
-  margin-bottom: 2px;
 }
 
 .export-card {
   background: #0f172a;
-  padding: 0 20px;
+  padding: 8px 20px;
   border-radius: 5px;
 }
 
@@ -164,13 +162,13 @@ body {
   color: #fffb04;
   font-size: 1.8rem;
   font-weight: bold;
-  margin-bottom: 0px;
+  margin: 0px;
 }
 
 .export-card p {
-  color: #ffd900;
-  font-size: 1rem;
-  margin-bottom: 0;
+  color: #ffd905;
+  font-size: 1.2rem;
+  margin: 0;
 }
 
 #export-area {
@@ -182,54 +180,9 @@ body {
   margin: auto;
 }
 
-.export-area-fixed12 {
-  width: 700px;
-  height: 700px;
-  max-width: 700px;
-  max-height: 700px;
+.export-header {
   display: flex;
   flex-direction: column;
-}
-
-.preset-fixed12 {
-  flex: 1;
-  min-height: 0;
-  width: 100%;
-  padding: 12px;
+  align-items: center;
   justify-content: center;
-  align-content: center;
-}
-
-.preset-fixed12 .img-wrapper {
-  width: 140px;
-  height: 140px;
-  flex: 0 0 140px;
-  max-width: 140px;
-  border-radius: 12px;
-}
-
-.preset-fixed12 .export-header {
-  padding-top: 6px;
-}
-
-.preset-fixed12 .export-logo {
-  width: 110px;
-  height: 110px;
-  margin-bottom: 4px;
-}
-
-.preset-fixed12 .export-card {
-  padding-top: 2px;
-}
-
-.preset-fixed12 .export-card h2 {
-  font-size: 1.2rem;
-}
-
-.preset-fixed12 .export-card p {
-  font-size: 0.9rem;
-}
-
-#collage-container {
-  margin-top: 0;
 }
