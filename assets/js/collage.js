@@ -22,36 +22,48 @@ function handlePaste(e) {
   }
 }
 
-function processFile(file) {
+async function processFile(file) {
   if (!file || !file.type.includes("image")) {
     return;
   }
 
-  const reader = new FileReader();
+  const img = new Image();
 
-  reader.onload = function (event) {
-    const img = new Image();
+  img.onload = async function () {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
 
-    img.onload = function () {
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
+    // ===== RESIZE =====
+    const MAX_WIDTH = 1400;
 
-      canvas.width = img.width;
-      canvas.height = img.height;
+    let width = img.width;
+    let height = img.height;
 
-      ctx.drawImage(img, 0, 0);
+    if (width > MAX_WIDTH) {
+      height = height * (MAX_WIDTH / width);
+      width = MAX_WIDTH;
+    }
 
-      const safeUrl = canvas.toDataURL("image/png");
+    canvas.width = width;
+    canvas.height = height;
 
-      photoData.push(safeUrl);
+    ctx.drawImage(img, 0, 0, width, height);
 
-      updateCollage();
-    };
+    // ===== COMPRESS =====
+    canvas.toBlob(
+      (blob) => {
+        const optimizedUrl = URL.createObjectURL(blob);
 
-    img.src = event.target.result;
+        photoData.push(optimizedUrl);
+
+        updateCollage();
+      },
+      "image/jpeg",
+      0.82
+    );
   };
 
-  reader.readAsDataURL(file);
+  img.src = URL.createObjectURL(file);
 }
 
 function updateCollage() {
@@ -77,7 +89,12 @@ function updateCollage() {
     div.className = "img-wrapper";
 
     div.innerHTML = `
-      <img src="${src}" alt="photo">
+      <img 
+        src="${src}" 
+        alt="photo"
+        loading="lazy"
+        decoding="async"
+      >
     `;
 
     container.appendChild(div);
@@ -90,6 +107,10 @@ function updateCollage() {
 }
 
 function resetCollage() {
+  photoData.forEach((url) => {
+    URL.revokeObjectURL(url);
+  });
+
   photoData = [];
 
   document.getElementById("collage-container").innerHTML = "";

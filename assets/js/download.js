@@ -65,8 +65,8 @@ async function downloadCollage(format) {
     await new Promise((resolve) => setTimeout(resolve, 300));
 
     const canvas = await html2canvas(element, {
-      scale: 4,
-      useCORS: false,
+      scale: 2,
+      useCORS: true,
       backgroundColor: null,
       logging: false,
     });
